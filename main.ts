@@ -149,10 +149,18 @@ class CopyMetadataSettingTab extends PluginSettingTab {
 
     containerEl.empty()
 
+    this.containerEl.createEl("h1", { text: "Copy Metadata" });
+  
+    this.containerEl.createEl("h3", {
+        text: "Please try reopening the vault or restarting Obsidian if the following setting changes do not take effect.",
+    });
+
+    this.containerEl.createEl("h2", { text: "Creation time" });
+
     // Date format for creation time setting
     new Setting(containerEl)
-    .setName('Creation time format')
-    .setDesc('This is in MomentJS format. Example: YYYY-MM-DDTHH:mm.')
+    .setName('Copy creation time format')
+    .setDesc('MomentJS format, e.g., YYYY-MM-DDTHH:mm.')
     .addText(text => text
       .setPlaceholder('YYYY-MM-DDTHH:mm')
       .setValue(this.plugin.settings.creationTimeFormat)
@@ -163,7 +171,6 @@ class CopyMetadataSettingTab extends PluginSettingTab {
     
     new Setting(containerEl)
     .setName('Append creation time to file name')
-    .setDesc('Append creation time to file name.')
     .addToggle(toggle => {
       toggle
         .setValue(this.plugin.settings.appendCreationTimeToFileName)
@@ -176,7 +183,7 @@ class CopyMetadataSettingTab extends PluginSettingTab {
     // Add a new setting for the append creation time format
     new Setting(containerEl)
     .setName('Append creation time format')
-    .setDesc('This is in MomentJS format. Example: YYYY-MM-DDTHH:mm.')
+    .setDesc('MomentJS format, e.g., YYYY-MM-DDTHH:mm.')
     .addText(text => text
       .setPlaceholder('YYYYMMDDHHmm')
       .setValue(this.plugin.settings.appendCreationTimeFormat)
