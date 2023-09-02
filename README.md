@@ -1,26 +1,27 @@
-![](https://img.shields.io/github/license/alangrainger/obsidian-frontmatter-modified-date) ![](https://img.shields.io/github/v/release/alangrainger/obsidian-frontmatter-modified-date?style=flat-square) ![](https://img.shields.io/github/downloads/alangrainger/obsidian-frontmatter-modified-date/total)
+# Copy Metadata
 
-# Update frontmatter modified date
+![](https://img.shields.io/github/license/wenlzhang/obsidian-copy-metadata) ![](https://img.shields.io/github/v/release/wenlzhang/obsidian-copy-metadata?style=flat-square) ![](https://img.shields.io/github/downloads/wenlzhang/obsidian-copy-metadata/total)
+
+An [Obsidian](https://obsidian.md/) plugin to copy metadata to clipboard and insert it into file name.
+
+## Features
+
+- Copy file creation time into clipboard
+- Append file creation time into file name
 
 This plugin will automatically update a modified property in your frontmatter/YAML when you edit a note.
 
-This is different from other plugins in that it does not use the filesystem modified time. The frontmatter will only
-update when you actually work on a file inside Obsidian.
+## Usage
 
-## Options
+Copy Metadata uses [moment.js](https://momentjs.com/docs/#/displaying/format/) to format the metadata time info. In addition, **square brackets** are needed to surround the content that is not part of the format string.
 
-- Specify whatever YAML field name you prefer.
-- Specify the date format, using [MomentJS format](https://momentjs.com/docs/#/displaying/format/).
-- Exclude folders which you don't want to be automatically updated. This is important for anywhere you store your scripts or Templater templates.
+- For example, if ` - 202301011200` is the desired text, then `[ - ]YYYYMMDDHHmm` needs to be configured in settings.
 
-## "Merging changes" popup
+## Credits
 
-It's possible when using this plugin that you will see a message like this:
+- [Obsidian: Update Frontmatter Modified Date](https://github.com/alangrainger/obsidian-frontmatter-modified-date)
+    - This plugin serves as a starting template.
 
-![9kcmzhtlu0l81](https://github.com/alangrainger/obsidian-frontmatter-modified-date/assets/16197738/841e085a-b681-4d5e-ae15-8657b77b048b)
+## Support me
 
-This is to be expected, and is due to the way Obsidian itself handles the frontmatter update. If you are typing into a note at the same time that Obsidian updates the frontmatter field, it will show that message. There is no "external" process modifying the file, it is Obsidian itself.
-
-My plugin works by waiting for 10 seconds after you stop typing before updating the frontmatter. By doing it this way it reduces the chance of that message popping up. However, if you start typing again the exact instant Obsidian is updating the frontmatter field, you'll see that message. It won't affect anything, it's just annoying. Hopefully they resolve this at some point.
-
-Please note that you do not need to have the file open for the frontmatter to update. The updates go into a queue and the file will update even after you close it.
+<a href='https://ko-fi.com/C0C66C1TB' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
