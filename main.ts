@@ -1,10 +1,11 @@
-import { App, Plugin, PluginSettingTab, Setting, TFile, moment } from 'obsidian'
+import { App, Plugin, PluginSettingTab, Setting, TFile, moment, Notice } from 'obsidian'
 
 interface CopyMetadataSettings {
   useKeyupEvents: boolean;
   timeout: number;
   creationTimeFormat: string;
   copyCreationTimeToClipboard: boolean;
+  appendCreationTimeFormat: string;
   appendCreationTimeToFileName: boolean;
 }
 
@@ -13,6 +14,7 @@ const DEFAULT_SETTINGS: CopyMetadataSettings = {
   timeout: 10,
   creationTimeFormat: 'YYYYMMDDHHmm',
   copyCreationTimeToClipboard: true,
+  appendCreationTimeFormat: 'YYYYMMDDHHmm',
   appendCreationTimeToFileName: false,
 }
 
@@ -71,6 +73,21 @@ export default class CopyMetadata extends Plugin {
       name: 'Copy creation time to clipboard',
       callback: () => this.copyCreationTime(),
     });
+
+    this.addCommand({
+      id: 'append-creation-time-to-file-name',
+      name: 'Append creation time to file name',
+      checkCallback: (checking: boolean) => {
+        if (!this.settings.appendCreationTimeToFileName) {
+          if (!checking) {
+            new Notice('Append creation time to file name setting is disabled.');
+          }
+          return false;
+        }
+        return true;
+      },
+      callback: () => this.appendCreationTimeToFileName(),
+    });
   }
 
   async copyCreationTime() {
@@ -78,13 +95,17 @@ export default class CopyMetadata extends Plugin {
     if (activeFile) {
       const stat = await this.app.vault.adapter.stat(activeFile.path);
       const creationTime = moment(stat.ctime).format(this.settings.creationTimeFormat);
+      navigator.clipboard.writeText(creationTime);
+    }
+  }
   
-      if (this.settings.appendCreationTimeToFileName) {
-        const newFileName = `${activeFile.basename} ${creationTime}${activeFile.extension}`;
-        await this.app.vault.rename(activeFile, newFileName);
-      } else {
-        navigator.clipboard.writeText(creationTime);
-      }
+  async appendCreationTimeToFileName() {
+    const activeFile = this.app.workspace.getActiveFile();
+    if (activeFile) {
+      const stat = await this.app.vault.adapter.stat(activeFile.path);
+      const creationTime = moment(stat.ctime).format(this.settings.appendCreationTimeFormat);
+      const newFileName = `${activeFile.basename} ${creationTime}`;
+      await this.app.vault.rename(activeFile, newFileName);
     }
   }
 
@@ -123,7 +144,7 @@ class CopyMetadataSettingTab extends PluginSettingTab {
     // Date format for creation time setting
     new Setting(containerEl)
     .setName('Creation time format')
-    .setDesc('This is in MomentJS format. Example: YYYY-MM-DDTHH:mm')
+    .setDesc('This is in MomentJS format. Example: YYYY-MM-DDTHH:mm.')
     .addText(text => text
       .setPlaceholder('YYYY-MM-DDTHH:mm')
       .setValue(this.plugin.settings.creationTimeFormat)
@@ -133,8 +154,8 @@ class CopyMetadataSettingTab extends PluginSettingTab {
       }));
     
     new Setting(containerEl)
-    .setName('Append to file name')
-    .setDesc('Append creation time to file name')
+    .setName('Append creation time to file name')
+    .setDesc('Append creation time to file name.')
     .addToggle(toggle => {
       toggle
         .setValue(this.plugin.settings.appendCreationTimeToFileName)
@@ -143,5 +164,17 @@ class CopyMetadataSettingTab extends PluginSettingTab {
           await this.plugin.saveSettings();
         });
     });
+
+    // Add a new setting for the append creation time format
+    new Setting(containerEl)
+    .setName('Append creation time format')
+    .setDesc('This is in MomentJS format. Example: YYYY-MM-DDTHH:mm.')
+    .addText(text => text
+      .setPlaceholder('YYYYMMDDHHmm')
+      .setValue(this.plugin.settings.appendCreationTimeFormat)
+      .onChange(async (value) => {
+        this.plugin.settings.appendCreationTimeFormat = value;
+        await this.plugin.saveSettings();
+      }));
   }
 }
