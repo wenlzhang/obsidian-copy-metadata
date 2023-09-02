@@ -9,6 +9,11 @@ An [Obsidian](https://obsidian.md/) plugin to copy metadata to clipboard and ins
 - Copy file creation time into clipboard
 - Append file creation time into file name
 
+## Use cases
+
+- One may easily create a quick note on Obsidian Mobile, where inserting a Zettelkasten timestamp to the file name might not be very convenient. When working on Obsidian Desktop later, one has the option to use this plugin, which will automatically append the note creation time to the file name.
+    - In fact, the main motivation behind developing this plugin is the frequent note-taking on mobile.
+
 ## Usage
 
 Copy Metadata uses [moment.js](https://momentjs.com/docs/#/displaying/format/) to format the metadata time info. In addition, **square brackets** are needed to surround the content that is not part of the format string.
