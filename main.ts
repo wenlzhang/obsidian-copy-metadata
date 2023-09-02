@@ -97,7 +97,7 @@ export default class CopyMetadata extends Plugin {
       const creationTime = moment(stat.ctime).format(this.settings.appendCreationTimeFormat);
   
       // Create the new file name by appending the creation time to the existing name
-      const newFileName = `${activeFile.basename}${creationTime}`;
+      const newFileName = `${activeFile.basename}${creationTime}.${activeFile.extension}`;
   
       // Rename the file
       try {
