@@ -1,6 +1,6 @@
 # Copy Metadata
 
-![](https://img.shields.io/github/license/wenlzhang/obsidian-copy-metadata) ![](https://img.shields.io/github/v/release/wenlzhang/obsidian-copy-metadata?style=flat-square) ![](https://img.shields.io/github/downloads/wenlzhang/obsidian-copy-metadata/total)
+![](https://img.shields.io/github/v/release/wenlzhang/obsidian-copy-metadata?style=flat-square) ![](https://img.shields.io/github/downloads/wenlzhang/obsidian-copy-metadata/total)
 
 An [Obsidian](https://obsidian.md/) plugin to copy metadata to clipboard and insert it into file name.
 
