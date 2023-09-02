@@ -77,15 +77,6 @@ export default class CopyMetadata extends Plugin {
     this.addCommand({
       id: 'append-creation-time-to-file-name',
       name: 'Append creation time to file name',
-      checkCallback: (checking: boolean) => {
-        if (!this.settings.appendCreationTimeToFileName) {
-          if (!checking) {
-            new Notice('Append creation time to file name setting is disabled.');
-          }
-          return false;
-        }
-        return true;
-      },
       callback: () => this.appendCreationTimeToFileName(),
     });
   }
@@ -104,8 +95,25 @@ export default class CopyMetadata extends Plugin {
     if (activeFile) {
       const stat = await this.app.vault.adapter.stat(activeFile.path);
       const creationTime = moment(stat.ctime).format(this.settings.appendCreationTimeFormat);
-      const newFileName = `${activeFile.basename} ${creationTime}`;
-      await this.app.vault.rename(activeFile, newFileName);
+  
+      // Create the new file name by appending the creation time to the existing name
+      const newFileName = `${activeFile.basename}${creationTime}`;
+  
+      // Rename the file
+      try {
+        if (this.settings.appendCreationTimeToFileName) {
+          await this.app.vault.rename(activeFile, newFileName);
+          new Notice('File name updated successfully.');
+          console.log('File name updated successfully.');
+        } else {
+          new Notice('Append creation time to file name setting is disabled!');
+        }
+      } catch (error) {
+        new Notice('Failed to update file name!');
+        console.log(error);
+      }
+    } else {
+      new Notice('No active file to update!');
     }
   }
 
