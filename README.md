@@ -9,8 +9,6 @@ An [Obsidian](https://obsidian.md/) plugin to copy metadata to clipboard and ins
 - Copy file creation time into clipboard
 - Append file creation time into file name
 
-This plugin will automatically update a modified property in your frontmatter/YAML when you edit a note.
-
 ## Usage
 
 Copy Metadata uses [moment.js](https://momentjs.com/docs/#/displaying/format/) to format the metadata time info. In addition, **square brackets** are needed to surround the content that is not part of the format string.
