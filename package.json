@@ -1,7 +1,7 @@
 {
-	"name": "frontmatter-modified-date",
+	"name": "copy-metadata",
 	"version": "1.2.0",
-	"description": "Automatically update a frontmatter modified date field when you modify your note. This will not use the filesystem time, but only when you modify the file through Obsidian.",
+	"description": "Copy file metadata to clipboard. Insert copied metadata to file name.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",

@@ -1,11 +1,13 @@
 {
-	"id": "frontmatter-modified-date",
-	"name": "Update frontmatter modified field on note edit",
-	"version": "1.2.0",
+	"id": "copy-metadata",
+	"name": "Copy metadata",
+	"version": "0.0.1",
 	"minAppVersion": "0.15.0",
-	"description": "Automatically update a frontmatter modified date field when you modify your note. This will not use the filesystem time, but only when you modify the file through Obsidian.",
-	"author": "Alan Grainger",
-	"authorUrl": "https://github.com/alangrainger",
-	"fundingUrl": "https://ko-fi.com/alan_",
+	"description": "Copy file metadata to clipboard. Insert copied metadata to file name.",
+	"author": "wenlzhang",
+	"authorUrl": "https://github.com/wenlzhang",
+	"fundingUrl": {
+        "Buy Me a Coffee": "https://ko-fi.com/f84556"
+    },
 	"isDesktopOnly": false
 }
