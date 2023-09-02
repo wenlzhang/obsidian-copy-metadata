@@ -1,6 +1,6 @@
 {
 	"id": "copy-metadata",
-	"name": "Copy metadata",
+	"name": "Copy Metadata",
 	"version": "0.0.1",
 	"minAppVersion": "0.15.0",
 	"description": "Copy file metadata to clipboard. Insert copied metadata to file name.",

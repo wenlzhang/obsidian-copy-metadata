@@ -68,7 +68,7 @@ export default class CopyMetadata extends Plugin {
     // Add commands
     this.addCommand({
       id: 'copy-creation-time-to-clipboard',
-      name: 'Copy Creation Time to Clipboard',
+      name: 'Copy creation time to clipboard',
       callback: () => this.copyCreationTime(),
     });
   }
@@ -122,7 +122,7 @@ class CopyMetadataSettingTab extends PluginSettingTab {
 
     // Date format for creation time setting
     new Setting(containerEl)
-    .setName('Creation Time Format')
+    .setName('Creation time format')
     .setDesc('This is in MomentJS format. Example: YYYY-MM-DDTHH:mm')
     .addText(text => text
       .setPlaceholder('YYYY-MM-DDTHH:mm')
@@ -133,8 +133,8 @@ class CopyMetadataSettingTab extends PluginSettingTab {
       }));
     
     new Setting(containerEl)
-    .setName('Append to File Name')
-    .setDesc('Append the creation time to the file name')
+    .setName('Append to file name')
+    .setDesc('Append creation time to file name')
     .addToggle(toggle => {
       toggle
         .setValue(this.plugin.settings.appendCreationTimeToFileName)
