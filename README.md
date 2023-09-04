@@ -2,17 +2,17 @@
 
 ![](https://img.shields.io/github/v/release/wenlzhang/obsidian-copy-metadata?style=flat-square) ![](https://img.shields.io/github/downloads/wenlzhang/obsidian-copy-metadata/total)
 
-An [Obsidian](https://obsidian.md/) plugin to copy metadata to clipboard and insert it into file name.
+An [Obsidian](https://obsidian.md/) plugin to copy metadata to clipboard and insert it into active file name.
 
 ## Features
 
 - Copy file creation time into clipboard
-- Append file creation time into file name
+- Append file creation time into active file name
 
 ## Use cases
 
-- One may easily create a quick note on Obsidian Mobile, where inserting a Zettelkasten timestamp to the file name might not be very convenient. When working on Obsidian Desktop later, one has the option to use this plugin, which will automatically append the note creation time to the file name.
-    - In fact, the main motivation behind developing this plugin is the frequent note-taking on mobile.
+- One may easily create a quick note on Obsidian Mobile, where inserting a Zettelkasten timestamp to the file name might not be very convenient. When working on Obsidian Desktop later, one has the option to use this plugin, which will automatically append the note creation time to the active file name.
+    - In fact, the main motivation behind developing this plugin is the frequent note-taking on mobile and note-renaming on desktop.
 
 ## Usage
 
