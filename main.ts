@@ -99,10 +99,13 @@ export default class CopyMetadata extends Plugin {
       // Create the new file name by appending the creation time to the existing name
       const newFileName = `${activeFile.basename}${creationTime}.${activeFile.extension}`;
   
+      // Create the new file path by appending the new file name to the current directory
+      const newFilePath = `${activeFile.path.substring(0, activeFile.path.lastIndexOf("/"))}/${newFileName}`;
+  
       // Rename the file
       try {
         if (this.settings.appendCreationTimeToFileName) {
-          await this.app.vault.rename(activeFile, newFileName);
+          await this.app.fileManager.renameFile(activeFile, newFilePath);
           new Notice('File name updated successfully.');
           console.log('File name updated successfully.');
         } else {
