@@ -25,46 +25,6 @@ export default class CopyMetadata extends Plugin {
   async onload () {
     await this.loadSettings()
 
-    if (!this.settings.useKeyupEvents) {
-      /*
-       * This is the default mode.
-       *
-       * For users who experience issues due to external programs modifying their files,
-       * they can use the special 'useKeyupEvents' mode below.
-       */
-      this.registerEvent(this.app.vault.on('modify', (file) => {
-        if (file instanceof TFile) {
-        }
-      }))
-    } else if (this.settings.useKeyupEvents) {
-      /*
-       * This is a special mode for users who can't rely on Obsidian detecting file changes.
-       * Both of these built-in events fire when a file is externally modified:
-       *
-       * app.vault.on('modify')
-       * app.workspace.on('editor-change')
-       *
-       * This apparently causes issues for people with iCloud, as Obsidian is constantly
-       * firing these events when files sync.
-       *
-       * See this comment: https://forum.obsidian.md/t/51776/20
-       * And this thread: https://forum.obsidian.md/t/14874
-       *
-       * The way I am doing this is probably a "bad" way. Anyone who knows the best practice
-       * here, please let me know! It works just fine but perhaps there's a better way.
-       */
-      this.registerDomEvent(document, 'keyup', (ev) => {
-        try {
-          // Check to see if the typing event was in the editor DOM element
-          // @ts-ignore
-          if (ev.target.closest('.markdown-source-view')) {
-            // Find the active TFile inside the editor view
-            // @ts-ignore
-          }
-        } catch (e) { }
-      })
-    }
-
     this.addSettingTab(new CopyMetadataSettingTab(this.app, this))
 
     // Add commands
@@ -152,13 +112,13 @@ class CopyMetadataSettingTab extends PluginSettingTab {
 
     containerEl.empty()
 
-    this.containerEl.createEl("h1", { text: "Copy Metadata" });
+    // this.containerEl.createEl("h1", { text: "Copy Metadata" });
   
     this.containerEl.createEl("h3", {
         text: "Please try reopening the vault or restarting Obsidian if the following setting changes do not take effect.",
     });
 
-    this.containerEl.createEl("h2", { text: "Creation time" });
+    // this.containerEl.createEl("h2", { text: "Creation time" });
 
     // Date format for creation time setting
     new Setting(containerEl)
