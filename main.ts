@@ -44,24 +44,22 @@ export default class CopyMetadata extends Plugin {
   async copyCreationTime() {
     const activeFile = this.app.workspace.getActiveFile();
     if (activeFile) {
-      const stat = await this.app.vault.adapter.stat(activeFile.path);
-      const creationTime = moment(stat.ctime).format(this.settings.creationTimeFormat);
+      const creationTime = moment(activeFile.stat.ctime).format(this.settings.creationTimeFormat);
       navigator.clipboard.writeText(creationTime);
     }
   }
-  
+
   async appendCreationTimeToFileName() {
     const activeFile = this.app.workspace.getActiveFile();
     if (activeFile) {
-      const stat = await this.app.vault.adapter.stat(activeFile.path);
-      const creationTime = moment(stat.ctime).format(this.settings.appendCreationTimeFormat);
-  
+      const creationTime = moment(activeFile.stat.ctime).format(this.settings.appendCreationTimeFormat);
+
       // Create the new file name by appending the creation time to the existing name
       const newFileName = `${activeFile.basename}${creationTime}.${activeFile.extension}`;
-  
+
       // Create the new file path by appending the new file name to the current directory
       const newFilePath = `${activeFile.path.substring(0, activeFile.path.lastIndexOf("/"))}/${newFileName}`;
-  
+
       // Rename the file
       try {
         if (this.settings.appendCreationTimeToFileName) {
