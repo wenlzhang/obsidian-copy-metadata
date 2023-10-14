@@ -1,6 +1,6 @@
 {
 	"name": "copy-metadata",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Copy file metadata to clipboard. Insert copied metadata to file name.",
 	"main": "main.js",
 	"scripts": {
