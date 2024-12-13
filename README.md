@@ -4,27 +4,38 @@
 
 An [Obsidian](https://obsidian.md/) plugin to copy metadata to clipboard and insert it into active file name.
 
-## Features
+## The Story Behind Copy Metadata
 
-- Copy file creation time into clipboard
-- Append file creation time into active file name
+This plugin was developed to address a common user scenario: many users frequently take notes on Obsidian Mobile but find it inconvenient to add a Zettelkasten timestamp to the file name.
 
-## Use cases
+While creating quick notes on mobile is effortless, transitioning to Obsidian Desktop often requires renaming those notes. This plugin provides a seamless solution by automatically appending the note creation time to the active file name, streamlining the workflow between mobile and desktop.
 
-- One may easily create a quick note on Obsidian Mobile, where inserting a Zettelkasten timestamp to the file name might not be very convenient. When working on Obsidian Desktop later, one has the option to use this plugin, which will automatically append the note creation time to the active file name.
-    - In fact, the main motivation behind developing this plugin is the frequent note-taking on mobile and note-renaming on desktop.
+## Documentation
 
-## Usage
+📚 **[View Full Documentation](https://exp.ptkm.net/obsidian-copy-metadata)**
 
-Copy Metadata uses [moment.js](https://momentjs.com/docs/#/displaying/format/) to format the metadata time info. In addition, **square brackets** are needed to surround the content that is not part of the format string.
+Visit the documentation site to learn how to make the most of Copy Metadata in your Obsidian workflow.
 
-- For example, if ` - 202301011200` is the desired text, then `[ - ]YYYYMMDDHHmm` needs to be configured in settings.
+## Support & Community
 
-## Credits
+This plugin is a labor of love, developed and maintained during my free time after work and on weekends. A lot of thought, energy, and care goes into making it reliable, user-friendly, and aligned with PTKM principles.
 
-- [Obsidian: Update Frontmatter Modified Date](https://github.com/alangrainger/obsidian-frontmatter-modified-date)
-    - This plugin serves as a starting template.
+If you find this plugin valuable in your daily workflow, please consider supporting my work. Your support would mean the world to me and would help me dedicate more time and energy to:
 
-## Support me
+- Developing new features
+- Maintaining code quality
+- Providing support and documentation
+- Making the plugin even better for everyone
 
-<a href='https://ko-fi.com/C0C66C1TB' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+### Ways to Support
+
+You can support this project in several ways:
+
+- ⭐ Star the project on GitHub
+- 💝 <a href='https://ko-fi.com/C0C66C1TB' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee' /></a>
+- [Sponsor](https://github.com/sponsors/wenlzhang) my work on GitHub
+- 💌 Share your success stories and feedback
+- 📢 Spread the word about the plugin
+- 🐛 [Report issues](https://github.com/wenlzhang/obsidian-copy-metadata/issues) to help improve the plugin
+
+Thank you for being part of this journey! 🙏
