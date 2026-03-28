@@ -12,7 +12,7 @@ While creating quick notes on mobile is effortless, transitioning to Obsidian De
 
 ## Documentation
 
-📚 **[View Full Documentation](https://exp.ptkm.net/obsidian-copy-metadata)**
+📚 **[View Full Documentation](https://ptkm.net/obsidian-copy-metadata)**
 
 Visit the documentation site to learn how to make the most of Copy Metadata in your Obsidian workflow.
 
